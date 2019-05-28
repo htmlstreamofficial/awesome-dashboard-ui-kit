@@ -72,6 +72,8 @@ awesome-dashboard-ui-kit/
 
 - Moden Design
 - Fully Responsive
+- Bootstrap 4
+- jQuery
 - SASS
 - BEM
 - Gulp
@@ -79,11 +81,16 @@ awesome-dashboard-ui-kit/
 - Area Charts
 - Custom Scrollbar
 - Fixed Sidebar
+- Sidebar Mini
+- Show/Hide Sidebar
+- Profile
+- Beautiful Widgets
+- Account Pages
 - Quality code
+- Reusable Components
+- Beautiful 404 & 500 Error Pages
 - Free Logo & Images
 - Font Awesome Icons
-- Profile
-- Beautiful 404 & 500 Error Pages
 - and many others..
 
 
