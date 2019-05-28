@@ -1,0 +1,119 @@
+//
+// Header Search
+//
+
+.u-header-search {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+
+  &-form {
+    position: absolute;
+    top: $header-search-form-offset-y;
+    left: $header-search-form-offset-x;
+    z-index: $header-search-form-z-index;
+    display: none;
+    width: $header-search-form-width;
+    background-color: $header-search-form-bg-color;
+    border-radius: $header-search-form-border-radius;
+    box-shadow: $header-search-form-box-shadow;
+    padding: $header-search-form-space;
+    margin-top: $header-search-form-spacing-y;
+    @include content-centered(true, false);
+
+    @include media-breakpoint-up(sm) {
+      position: static;
+      top: auto;
+      left: auto;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      margin-top: 0;
+      transform: none;
+    }
+  }
+
+  &__btn,
+  &__field {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  &__btn,
+  &__mobile-invoker {
+    font-size: $header-search-btn-font-size;
+    color: $header-search-btn-color;
+    transition: color .2s ease-in;
+    height: 100%;
+
+    &:hover {
+      color: $header-search-btn-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: 0 none;
+    }
+  }
+
+  &__btn {
+    width: auto;
+    margin-right: $header-search-btn-margin-right;
+    background-color: transparent;
+  }
+
+  &__mobile-invoker {
+    display: inline-flex;
+
+    @include media-breakpoint-up(sm) {
+      display: none;
+    }
+  }
+
+  &__field {
+    font-size: $header-search-input-font-size;
+    font-weight: $font-weight-normal;
+    color: $header-search-input-color;
+    padding: $header-search-input-input-y $header-search-input-input-x !important;
+
+    &::-webkit-input-placeholder {
+      color: $header-search-input-color;
+      opacity: 1;
+    }
+
+    &::-moz-placeholder {
+      color: $header-search-input-color;
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 0 none;
+      box-shadow: none;
+
+      &::-webkit-input-placeholder {
+        color: $header-search-input-focus-color;
+        opacity: 0;
+      }
+
+      &::-moz-placeholder {
+        color: $header-search-input-focus-color;
+        opacity: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    &__btn,
+    &__field {
+      padding: .5rem !important;
+    }
+    &__btn {
+      margin-right: 0;
+    }
+  }
+}

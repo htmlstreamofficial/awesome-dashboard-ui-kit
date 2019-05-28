@@ -1,0 +1,100 @@
+//
+// Select2
+//
+
+.select2-container--default {
+  .select2-selection--single {
+    border-color: $select2-border-color;
+    padding: $select2-padding-y $select2-padding-x;
+
+    &:focus {
+      outline: 0 none;
+    }
+
+    .select2-selection__rendered {
+      line-height: $select2-line-height;
+      font-weight: $select2-font-weight;
+      font-size: $select2-font-size;
+      color: $select2-color;
+      padding: 0;
+    }
+
+    .select2-selection__arrow {
+      top: 50%;
+      right: $select2-offset-y;
+      display: inline-flex;
+      width: auto;
+      height: auto;
+      transform: translateY(-50%);
+
+      b {
+        position: static;
+        top: 0;
+        left: 0;
+        display: inline-flex;
+        width: auto;
+        height: auto;
+        line-height: 1;
+        font-weight: normal;
+        border: 0 none;
+        margin-top: 0;
+        margin-left: 0;
+
+        &:before {
+          content: $select2-arrow-icon;
+          font-family: $select2-arrow-font-family;
+          color: $select2-arrow-color;
+        }
+      }
+    }
+  }
+
+  .select2-search--dropdown {
+    .select2-search__field {
+      padding: $input-padding-y $input-padding-x;
+      border-color: $select2-border-color;
+      border-radius: $border-radius;
+
+      &:focus {
+        outline: 0 none;
+      }
+    }
+  }
+
+  .select2-results__option {
+    &[aria-selected="true"] {
+      background-color: $select2-dropdown-item-bg-color-active;
+    }
+  }
+
+  .select2-results__option--highlighted {
+    &[aria-selected] {
+      color: $select2-dropdown-item-color-hover;
+      background-color: $select2-dropdown-item-bg-color-hover;
+    }
+  }
+}
+
+.select2-dropdown {
+  border-color: $select2-border-color;
+  border-radius: $border-radius;
+}
+
+.select2-search--dropdown {
+  padding: $select2-dropdown-search-padding-y $select2-dropdown-search-padding-x;
+  border-bottom: 1px solid $select2-border-color;
+}
+
+.select2-results__option {
+  line-height: $select2-line-height;
+  font-weight: $select2-font-weight;
+  font-size: $select2-font-size;
+  color: $select2-color;
+  padding: $select2-dropdown-item-padding-y $select2-dropdown-item-padding-x;
+}
+
+.select2-container {
+  .select2-selection--single {
+    height: auto;
+  }
+}

@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>chartjs-plugin-style sample</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="../dist/chartjs-plugin-style.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+		.chart {
+			margin: auto;
+			width: 75%;
+		}
+		.text-center {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chart">
+		<canvas id="myChart"></canvas>
+	</div>
+	<div>
+		<p class="text-center">
+			<button id="randomizeData">Randomize Data</button>
+			<button id="addDataset">Add Dataset</button>
+			<button id="removeDataset">Remove Dataset</button>
+			<button id="addData">Add Data</button>
+			<button id="removeData">Remove Data</button>
+		</p>
+	</div>
+
+	<script>
+		var chartColors = {
+			red: 'rgb(255, 99, 132)',
+			orange: 'rgb(255, 159, 64)',
+			yellow: 'rgb(255, 205, 86)',
+			green: 'rgb(75, 192, 192)',
+			blue: 'rgb(54, 162, 235)',
+			purple: 'rgb(153, 102, 255)',
+			grey: 'rgb(201, 203, 207)'
+		};
+		var effectColors = {
+			highlight: 'rgba(255, 255, 255, 0.75)',
+			shadow: 'rgba(0, 0, 0, 0.5)',
+			glow: 'rgb(255, 255, 0)'	
+		};
+
+		function randomScalingFactor() {
+			return Math.round(Math.random() * 100);
+		}
+
+		var color = Chart.helpers.color;
+		var config = {
+			type: 'polarArea',
+			data: {
+				labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+				datasets: [{
+					data: [0, 0, 0, 0, 0].map(function() {
+						return randomScalingFactor();
+					}),
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+					],
+					shadowOffsetX: 3,
+					shadowOffsetY: 3,
+					shadowBlur: 10,
+					shadowColor: effectColors.shadow,
+					bevelWidth: 2,
+					bevelHighlightColor: effectColors.highlight,
+					bevelShadowColor: effectColors.shadow,
+					hoverInnerGlowWidth: 20,
+					hoverInnerGlowColor: effectColors.glow,
+					hoverOuterGlowWidth: 20,
+					hoverOuterGlowColor: effectColors.glow
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Mixed (polar area chart) sample'
+				},
+				scale: {
+					ticks: {
+						beginAtZero: true,
+						showLabelBackdrop: false
+					}
+				},
+				tooltips: {
+					shadowOffsetX: 3,
+					shadowOffsetY: 3,
+					shadowBlur: 10,
+					shadowColor: effectColors.shadow,
+					bevelWidth: 2,
+					bevelHighlightColor: effectColors.highlight,
+					bevelShadowColor: effectColors.shadow
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				},
+				layout: {
+					padding: {
+						bottom: 10
+					}
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('myChart').getContext('2d');
+			window.myChart = new Chart(ctx, config);
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return randomScalingFactor();
+				});
+			});
+			window.myChart.update();
+		});
+
+		var colorNames = Object.keys(chartColors);
+		document.getElementById('addDataset').addEventListener('click', function() {
+			var colorName = colorNames[config.data.datasets.length % colorNames.length];
+			var newColor = chartColors[colorName];
+			var newDataset = {
+				data: [],
+				backgroundColor: [],
+				shadowOffsetX: 3,
+				shadowOffsetY: 3,
+				shadowBlur: 10,
+				shadowColor: effectColors.shadow,
+				bevelWidth: 2,
+				bevelHighlightColor: effectColors.highlight,
+				bevelShadowColor: effectColors.shadow,
+				hoverInnerGlowWidth: 20,
+				hoverInnerGlowColor: effectColors.glow,
+				hoverOuterGlowWidth: 20,
+				hoverOuterGlowColor: effectColors.glow
+			};
+
+			for (var index = 0; index < config.data.labels.length; ++index) {
+				newDataset.data.push(randomScalingFactor());
+
+				var colorName = colorNames[index % colorNames.length];
+				var newColor = window.chartColors[colorName];
+				newDataset.backgroundColor.push(newColor);
+			}
+
+			config.data.datasets.push(newDataset);
+			window.myChart.update();
+		});
+
+		document.getElementById('removeDataset').addEventListener('click', function() {
+			config.data.datasets.pop();
+			window.myChart.update();
+		});
+
+		document.getElementById('addData').addEventListener('click', function() {
+			if (config.data.datasets.length > 0) {
+				var colorName = colorNames[config.data.datasets[0].data.length % colorNames.length];
+				var newColor = window.chartColors[colorName];
+
+				config.data.labels.push(colorName.charAt(0).toUpperCase() + colorName.slice(1));
+
+				config.data.datasets.forEach(function(dataset) {
+					dataset.data.push(randomScalingFactor());
+					dataset.backgroundColor.push(newColor);
+				});
+
+				window.myChart.update();
+			}
+		});
+
+		document.getElementById('removeData').addEventListener('click', function() {
+			config.data.labels.splice(-1, 1); // remove the label first
+
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data.pop();
+				dataset.backgroundColor.pop();
+			});
+
+			window.myChart.update();
+		});
+	</script>
+</body>
+
+</html>

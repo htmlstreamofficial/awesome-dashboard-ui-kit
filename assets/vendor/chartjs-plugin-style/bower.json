@@ -1,0 +1,15 @@
+{
+  "name": "chartjs-plugin-style",
+  "description": "Chart.js plugin for more styling options",
+  "homepage": "https://nagix.github.io/chartjs-plugin-style",
+  "license": "MIT",
+  "version": "0.4.0",
+  "main": "./dist/chartjs-plugin-style.js",
+  "ignore": [
+    ".codeclimate.yml",
+    ".gitignore",
+    ".npmignore",
+    ".travis.yml",
+    "scripts"
+  ]
+}

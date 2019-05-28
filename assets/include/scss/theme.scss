@@ -1,0 +1,21 @@
+// Bootstrap setup
+@import '../../vendor/bootstrap/scss/functions';
+
+// Awesome setup
+@import './awesome/variables';
+
+// Custom setup
+@import './user-variables';
+
+// Bootstrap core
+@import '../../vendor/bootstrap/scss/bootstrap';
+
+/*----------------------------------------------------------------------
+  * Awesome - Responsive Website Template
+  * Copyright 2019 Htmlstream
+------------------------------------------------------------------------*/
+
+@import './awesome/awesome';
+
+// Custom core
+@import './user';

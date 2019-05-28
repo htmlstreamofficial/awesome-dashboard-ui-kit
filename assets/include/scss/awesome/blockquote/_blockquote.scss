@@ -1,0 +1,52 @@
+//
+// Blockquote
+//
+
+.blockquote {
+  position: relative;
+  line-height: $blockquote-line-height;
+  font-weight: $blockquote-font-weight;
+  color: $blockquote-color;
+  padding-left: $blockquote-padding-x;
+
+  &::before {
+    content: $blockquote-helper-content;
+    position: absolute;
+    top: $blockquote-helper-offset-y;
+    left: $blockquote-helper-offset-x;
+    line-height: $blockquote-helper-line-height;
+    font: {
+      weight: $blockquote-helper-font-weight;
+      style: $blockquote-helper-font-style;
+      size: $blockquote-helper-font-size;
+      family: $blockquote-helper-font-family;
+    }
+    color: $blockquote-helper-color;
+  }
+  &.text-center::before {
+    left: 50%;
+    margin-left: -($blockquote-helper-font-size/2);
+  }
+  &.text-right::before {
+    right: $blockquote-helper-offset-x;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  p {
+    line-height: $blockquote-line-height;
+    color: $blockquote-color;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      display: none;
+    }
+  }
+}

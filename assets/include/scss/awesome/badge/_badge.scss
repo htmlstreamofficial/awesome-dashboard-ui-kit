@@ -1,0 +1,81 @@
+//
+// Badge
+//
+
+.badge {
+  line-height: $badge-line-height;
+
+  // With Close
+  &-with-close {
+    display: inline-flex;
+    align-items: center;
+
+    .close {
+      margin-left: auto;
+      font-size: $small-font-size;
+      opacity: 1;
+    }
+  }
+
+  // Colors
+  &-success,
+  &-warning,
+  &-info {
+    color: $white;
+  }
+
+  // Soft
+  &-primary-soft {
+    color: $primary;
+
+    &[href]:hover {
+      color: $primary;
+      background-color: rgba($primary, .2);
+    }
+  }
+
+  &-secondary-soft {
+    color: $secondary;
+
+    &[href]:hover {
+      color: $secondary;
+      background-color: rgba($secondary, .2);
+    }
+  }
+
+  &-success-soft {
+    color: $success;
+
+    &[href]:hover {
+      color: $success;
+      background-color: rgba($success, .2);
+    }
+  }
+
+  &-warning-soft {
+    color: $warning;
+
+    &[href]:hover {
+      color: $warning;
+      background-color: rgba($warning, .2);
+    }
+  }
+
+  &-danger-soft {
+    color: $danger;
+
+    &[href]:hover {
+      color: $danger;
+      background-color: rgba($danger, .2);
+    }
+  }
+
+  &-info-soft {
+    color: $info;
+
+    &[href]:hover {
+      color: $info;
+      background-color: rgba($info, .2);
+    }
+  }
+}

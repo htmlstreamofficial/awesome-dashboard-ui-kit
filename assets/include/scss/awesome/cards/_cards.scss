@@ -1,0 +1,43 @@
+//
+// Cards
+//
+
+.card {
+  box-shadow: $card-shadow;
+
+  // Card Header
+  &-header {
+    // Accordion
+    & [data-toggle="collapse"][aria-expanded="false"] {
+      color: $card-header-collapsed-color;
+    }
+
+    & [data-toggle="collapse"][aria-expanded="true"] {
+      color: $card-header-expanded-color;
+    }
+  }
+
+  &-header-with-tabs,
+  &-header-with-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-header-title {
+    margin-bottom: 0;
+    line-height: $card-header-title-line-height;
+  }
+
+  &-title {
+    margin-bottom: $card-title-spacer-y;
+  }
+
+  &-subtitle {
+    margin-top: 0;
+
+    &:not(:last-child) {
+      margin-bottom: $card-sub-title-spacer-y;
+    }
+  }
+}

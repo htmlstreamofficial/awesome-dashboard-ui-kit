@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>chartjs-plugin-style sample</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="../dist/chartjs-plugin-style.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+		.chart {
+			margin: auto;
+			width: 75%;
+		}
+		.text-center {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chart">
+		<canvas id="myChart"></canvas>
+	</div>
+	<div>
+		<p class="text-center">
+			<button id="randomizeData">Randomize Data</button>
+		</p>
+	</div>
+
+	<script>
+		var chartColors = {
+			red: 'rgb(255, 99, 132)',
+			blue: 'rgb(54, 162, 235)'
+		};
+		var effectColors = {
+			highlight: 'rgba(255, 255, 255, 0.75)',
+			shadow: 'rgba(0, 0, 0, 0.5)',
+			glow: 'rgb(255, 255, 0)'	
+		};
+
+		function randomScalingFactor() {
+			return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+		}
+
+		var color = Chart.helpers.color;
+		var config = {
+			type: 'bar',
+			data: {
+				labels: [5, 10, 15, 20, 25, 30, 0],
+				datasets: [{
+					label: 'Dataset 1',
+					backgroundColor: chartColors.red,
+					borderWidth: 0,
+					data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+						return randomScalingFactor();
+					}),
+					innerGlowWidth: [5, 10, 15, 20, 25, 30, 0],
+					innerGlowColor: effectColors.glow
+				}, {
+					label: 'Dataset 2',
+					backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+					borderWidth: 0,
+					data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+						return randomScalingFactor();
+					}),
+					innerGlowWidth: [5, 10, 15, 20, 25, 30, 0],
+					innerGlowColor: effectColors.glow
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Inner glow effect sample'
+				},
+				scales: {
+					xAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'innerGlowWidth'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}]
+				},
+				tooltips: {
+					innerGlowWidth: 20,
+					innerGlowColor: effectColors.glow
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('myChart').getContext('2d');
+			window.myChart = new Chart(ctx, config);
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return randomScalingFactor();
+				});
+			});
+			window.myChart.update();
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+//
+// Alert
+//
+
+.alert {
+  display: flex;
+  align-items: center;
+
+  &-icon {
+    display: inline-block;
+    font-size: $alert-icon-font-size;
+    margin: $alert-icon-offset-y $alert-icon-offset-x;
+  }
+
+  &-light {
+    color: $alert-light-color;
+  }
+
+  // Soft
+  &-primary-soft {
+    color: $primary;
+  }
+
+  &-secondary-soft {
+    color: $secondary;
+  }
+
+  &-success-soft {
+    color: $success;
+  }
+
+  &-warning-soft {
+    color: $warning;
+  }
+
+  &-danger-soft {
+    color: $danger;
+  }
+
+  &-info-soft {
+    color: $info;
+  }
+}

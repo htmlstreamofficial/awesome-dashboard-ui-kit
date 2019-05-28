@@ -1,0 +1,15 @@
+//
+// Hero Section
+//
+
+.u-hero {
+  background: {
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+  }
+
+  &--end {
+    background-position: right bottom;
+  }
+}

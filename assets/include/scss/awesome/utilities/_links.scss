@@ -1,0 +1,23 @@
+//
+// Links
+//
+
+a[class*="text-"] {
+  transition: all .2s ease-in;
+}
+
+.link-dark {
+  color: $link-dark-color;
+
+  &:hover {
+    color: $link-dark-hover-color;
+  }
+}
+
+.link-muted {
+  color: $link-muted-color;
+
+  &:hover {
+    color: $link-muted-hover-color;
+  }
+}

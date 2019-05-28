@@ -1,0 +1,17 @@
+//
+// Sidebar Desktop
+//
+
+.u-sidebar-invoker {
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+
+.u-sidebar-inner {
+  .mini.action & {
+    @include media-breakpoint-up(lg) {
+      width: $sidebar-min-width;
+    }
+  }
+}

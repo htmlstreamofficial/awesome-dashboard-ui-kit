@@ -1,0 +1,29 @@
+//
+// Dividers
+//
+
+.divider-with-text {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: $divider-with-text-helper-width;
+    height: 0;
+    background: $divider-with-text-content-bg-color;
+    border-top: $divider-with-text-helper-border-width solid $divider-with-text-helper-border-color;
+    transform: translateY(-50%);
+  }
+
+  &__content {
+    position: relative;
+    display: inline-block;
+    font-weight: $divider-with-text-content-font-weight;
+    font-size: $divider-with-text-content-font-size;
+    color: $divider-with-text-content-color;
+    background-color: $divider-with-text-content-bg-color;
+    padding: $divider-with-text-content-padding-y $divider-with-text-content-padding-x;
+  }
+}

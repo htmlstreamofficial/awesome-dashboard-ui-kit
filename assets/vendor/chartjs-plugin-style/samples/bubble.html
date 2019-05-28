@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>chartjs-plugin-style sample</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="../dist/chartjs-plugin-style.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+		.chart {
+			margin: auto;
+			width: 75%;
+		}
+		.text-center {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chart">
+		<canvas id="myChart"></canvas>
+	</div>
+	<div>
+		<p class="text-center">
+			<button id="randomizeData">Randomize Data</button>
+			<button id="addDataset">Add Dataset</button>
+			<button id="removeDataset">Remove Dataset</button>
+			<button id="addData">Add Data</button>
+			<button id="removeData">Remove Data</button>
+		</p>
+	</div>
+
+	<script>
+		var chartColors = {
+			red: 'rgb(255, 99, 132)',
+			orange: 'rgb(255, 159, 64)',
+			yellow: 'rgb(255, 205, 86)',
+			green: 'rgb(75, 192, 192)',
+			blue: 'rgb(54, 162, 235)',
+			purple: 'rgb(153, 102, 255)',
+			grey: 'rgb(201, 203, 207)'
+		};
+		var effectColors = {
+			highlight: 'rgba(255, 255, 255, 0.75)',
+			shadow: 'rgba(0, 0, 0, 0.5)',
+			glow: 'rgb(255, 255, 0)'	
+		};
+
+		function randomScalingFactor() {
+			return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+		}
+
+		var color = Chart.helpers.color;
+		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		var config = {
+			type: 'bubble',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: 'Dataset 1',
+					backgroundColor: chartColors.red,
+					borderWidth: 0,
+					data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+						return {
+							x: randomScalingFactor(),
+							y: randomScalingFactor(),
+							v: Math.round(Math.random() * 30) + 10
+						};
+					}),
+					shadowOffsetX: 3,
+					shadowOffsetY: 3,
+					shadowBlur: 10,
+					shadowColor: effectColors.shadow,
+					bevelWidth: 2,
+					bevelHighlightColor: effectColors.highlight,
+					bevelShadowColor: effectColors.shadow,
+					hoverInnerGlowWidth: 20,
+					hoverInnerGlowColor: effectColors.glow,
+					hoverOuterGlowWidth: 20,
+					hoverOuterGlowColor: effectColors.glow
+				}, {
+					label: 'Dataset 2',
+					backgroundColor: chartColors.blue,
+					borderWidth: 0,
+					data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+						return {
+							x: randomScalingFactor(),
+							y: randomScalingFactor(),
+							v: Math.round(Math.random() * 30) + 10
+						};
+					}),
+					shadowOffsetX: 3,
+					shadowOffsetY: 3,
+					shadowBlur: 10,
+					shadowColor: effectColors.shadow,
+					bevelWidth: 2,
+					bevelHighlightColor: effectColors.highlight,
+					bevelShadowColor: effectColors.shadow,
+					hoverInnerGlowWidth: 20,
+					hoverInnerGlowColor: effectColors.glow,
+					hoverOuterGlowWidth: 20,
+					hoverOuterGlowColor: effectColors.glow
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Mixed (bubble chart) sample'
+				},
+				elements: {
+					point: {
+						radius: function(context) {
+							var value = context.dataset.data[context.dataIndex];
+							return value.v * context.chart.width / 1000;
+						}
+					}
+				},
+				scales: {
+					xAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Value 1'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Value 2'
+						}
+					}]
+				},
+				tooltips: {
+					shadowOffsetX: 3,
+					shadowOffsetY: 3,
+					shadowBlur: 10,
+					shadowColor: effectColors.shadow,
+					bevelWidth: 2,
+					bevelHighlightColor: effectColors.highlight,
+					bevelShadowColor: effectColors.shadow
+				},
+				layout: {
+					padding: {
+						right: 40
+					}
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('myChart').getContext('2d');
+			window.myChart = new Chart(ctx, config);
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return {
+						x: randomScalingFactor(),
+						y: randomScalingFactor(),
+						v: Math.round(Math.random() * 30) + 10
+					};
+				});
+			});
+			window.myChart.update();
+		});
+
+		var colorNames = Object.keys(chartColors);
+		document.getElementById('addDataset').addEventListener('click', function() {
+			var colorName = colorNames[config.data.datasets.length % colorNames.length];
+			var newColor = chartColors[colorName];
+			var newDataset = {
+				label: 'Dataset ' + (config.data.datasets.length + 1),
+				backgroundColor: newColor,
+				borderWidth: 0,
+				data: [],
+				shadowOffsetX: 3,
+				shadowOffsetY: 3,
+				shadowBlur: 10,
+				shadowColor: effectColors.shadow,
+				bevelWidth: 2,
+				bevelHighlightColor: effectColors.highlight,
+				bevelShadowColor: effectColors.shadow,
+				hoverInnerGlowWidth: 20,
+				hoverInnerGlowColor: effectColors.glow,
+				hoverOuterGlowWidth: 20,
+				hoverOuterGlowColor: effectColors.glow
+			};
+
+			for (var index = 0; index < config.data.labels.length; ++index) {
+				newDataset.data.push({
+					x: randomScalingFactor(),
+					y: randomScalingFactor(),
+					v: Math.round(Math.random() * 30) + 10
+				});
+			}
+
+			config.data.datasets.push(newDataset);
+			window.myChart.update();
+		});
+
+		document.getElementById('removeDataset').addEventListener('click', function() {
+			config.data.datasets.pop();
+			window.myChart.update();
+		});
+
+		document.getElementById('addData').addEventListener('click', function() {
+			if (config.data.datasets.length > 0) {
+				var month = MONTHS[config.data.labels.length % MONTHS.length];
+				config.data.labels.push(month);
+
+				config.data.datasets.forEach(function(dataset) {
+					dataset.data.push({
+						x: randomScalingFactor(),
+						y: randomScalingFactor(),
+						v: Math.round(Math.random() * 30) + 10
+					});
+				});
+
+				window.myChart.update();
+			}
+		});
+
+		document.getElementById('removeData').addEventListener('click', function() {
+			config.data.labels.splice(-1, 1); // remove the label first
+
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data.pop();
+			});
+
+			window.myChart.update();
+		});
+	</script>
+</body>
+
+</html>

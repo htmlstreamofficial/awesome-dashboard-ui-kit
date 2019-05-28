@@ -1,0 +1,19 @@
+//
+// Indicators Sizes
+//
+
+.u-indicator {
+  &-sm {
+    border-width: 2px;
+  }
+
+  &-sm {
+    width: $indicator-width-sm;
+    height: $indicator-height-sm;
+  }
+
+  &-xxs {
+    width: $indicator-width-xxs;
+    height: $indicator-height-xxs;
+  }
+}

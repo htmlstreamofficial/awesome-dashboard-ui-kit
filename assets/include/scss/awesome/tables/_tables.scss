@@ -1,0 +1,45 @@
+//
+// Tables
+//
+
+.table {
+  th,
+  td {
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: $table-th-font-weight;
+    color: $table-th-color;
+    border-top: none;
+  }
+
+  thead th {
+    border-bottom-width: $table-border-width;
+  }
+
+  tbody + tbody {
+    border-top-width: $table-border-width;
+  }
+}
+
+.card-table {
+  width: 100%;
+
+  th,
+  td {
+    padding-left: $table-cell-padding;
+    padding-right: $table-cell-padding;
+    border-bottom: 1px solid $border-color;
+  }
+
+  th:first-child,
+  td:first-child {
+    padding-left: $card-spacer-x;
+  }
+
+  th:last-child,
+  td:last-child {
+    padding-right: $card-spacer-x;
+  }
+}

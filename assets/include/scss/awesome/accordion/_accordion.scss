@@ -1,0 +1,28 @@
+//
+// Accordion
+//
+
+.accordion {
+  .card {
+    border-top: $accordion-border-width solid $accordion-border-color;
+    box-shadow: none;
+
+    &:last-child {
+      .card-body {
+        padding: $accordion-padding-y $accordion-padding-x;
+      }
+    }
+
+    &-header {
+      padding: $accordion-header-padding-y $accordion-header-padding-x;
+
+      &-title {
+        cursor: pointer;
+      }
+    }
+
+    &-body {
+      padding: $accordion-padding-top $accordion-padding-x $accordion-padding-bottom;
+    }
+  }
+}

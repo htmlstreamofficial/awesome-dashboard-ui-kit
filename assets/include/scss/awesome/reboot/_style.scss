@@ -1,0 +1,61 @@
+//
+// Default Styles
+//
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern";
+  text-rendering: optimizelegibility;
+}
+
+body {
+  font-size: .9375rem;
+}
+
+p {
+  line-height: $paragraph-line-height;
+  color: $paragraph-color;
+}
+
+label {
+  font-size: $label-font-size;
+  color: $label-color;
+}
+
+figure {
+  margin-bottom: 0;
+}
+
+canvas {
+  max-width: 100% !important;
+}
+
+// Highlight Color
+::-moz-selection {
+  color: $white;
+  background-color: $primary;
+}
+
+::selection {
+  color: $white;
+  background-color: $primary;
+}
+
+.bg-primary ::-moz-selection {
+  color: $primary;
+  background-color: $white;
+}
+
+.bg-primary ::selection {
+  color: $primary;
+  background-color: $white;
+}
+
+// Popover
+[data-toggle="popover"] {
+  cursor: pointer;
+}

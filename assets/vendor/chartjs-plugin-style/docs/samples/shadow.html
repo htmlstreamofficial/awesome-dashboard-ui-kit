@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>chartjs-plugin-style sample</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<!--<script src="https://github.com/nagix/chartjs-plugin-style/releases/download/v0.4.0/chartjs-plugin-style.min.js"></script>-->
+	<script src="../../dist/chartjs-plugin-style.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+		.chart {
+			margin: auto;
+			width: 75%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="chart">
+		<canvas id="myChart"></canvas>
+	</div>
+	<div class="container mt-3">
+		<p class="text-center">
+			<button type="button" class="btn btn-outline-primary btn-sm" id="randomizeData">Randomize Data</button>
+		</p>
+	</div>
+	<div class="container mt-3">
+		<ul class="nav nav-tabs mb-2" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="js-tab" data-toggle="tab" href="#js" role="tab" aria-controls="js" aria-selected="true">JavaScript</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="html-tab" data-toggle="tab" href="#html" role="tab" aria-controls="html" aria-selected="false">HTML</a>
+			</li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="js" role="tabpanel" aria-labelledby="js-tab">
+				<pre class="prettyprint lang-js p-3 bg-light">var chartColors = {
+	red: 'rgb(255, 99, 132)',
+	blue: 'rgb(54, 162, 235)'
+};
+var effectColors = {
+	highlight: 'rgba(255, 255, 255, 0.75)',
+	shadow: 'rgba(0, 0, 0, 0.5)',
+	glow: 'rgb(255, 255, 0)'	
+};
+
+function randomScalingFactor() {
+	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+}
+
+var color = Chart.helpers.color;
+var config = {
+	type: 'bar',
+	data: {
+		labels: [5, 10, 15, 20, 25, 30, 0],
+		datasets: [{
+			label: 'Dataset 1',
+			backgroundColor: chartColors.red,
+			borderWidth: 0,
+			data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+				return randomScalingFactor();
+			}),
+			shadowOffsetX: 5,
+			shadowOffsetY: 5,
+			shadowBlur: [5, 10, 15, 20, 25, 30, 0],
+			shadowColor: effectColors.shadow
+		}, {
+			label: 'Dataset 2',
+			backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+			borderWidth: 0,
+			data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+				return randomScalingFactor();
+			}),
+			shadowOffsetX: 5,
+			shadowOffsetY: 5,
+			shadowBlur: [5, 10, 15, 20, 25, 30, 0],
+			shadowColor: effectColors.shadow
+		}]
+	},
+	options: {
+		title: {
+			display: true,
+			text: 'Drop shadow effect sample'
+		},
+		scales: {
+			xAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'ShadowBlur'
+				}
+			}],
+			yAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Value'
+				}
+			}]
+		},
+		tooltips: {
+			shadowOffsetX: 3,
+			shadowOffsetY: 3,
+			shadowBlur: 10,
+			shadowColor: effectColors.shadow,
+		}
+	}
+};
+
+window.onload = function() {
+	var ctx = document.getElementById('myChart').getContext('2d');
+	window.myChart = new Chart(ctx, config);
+};
+
+document.getElementById('randomizeData').addEventListener('click', function() {
+	config.data.datasets.forEach(function(dataset) {
+		dataset.data = dataset.data.map(function() {
+			return randomScalingFactor();
+		});
+	});
+	window.myChart.update();
+});</pre>
+			</div>
+			<div class="tab-pane fade" id="html" role="tabpanel" aria-labelledby="html-tab">
+				<pre class="prettyprint lang-html p-3 bg-light">&lt;head&gt;
+	&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"&gt;&lt;/script&gt;
+	&lt;script src="https://github.com/nagix/chartjs-plugin-style/releases/download/v0.4.0/chartjs-plugin-style.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div&gt;
+		&lt;canvas id="myChart"&gt;&lt;/canvas&gt;
+	&lt;/div&gt;
+	&lt;p&gt;
+		&lt;button id="randomizeData"&gt;Randomize Data&lt;/button&gt;
+		&lt;button id="addDataset"&gt;Add Dataset&lt;/button&gt;
+		&lt;button id="removeDataset"&gt;Remove Dataset&lt;/button&gt;
+		&lt;button id="addData"&gt;Add Data&lt;/button&gt;
+		&lt;button id="removeData"&gt;Remove Data&lt;/button&gt;
+	&lt;/p&gt;
+&lt;/body&gt;</pre>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var chartColors = {
+			red: 'rgb(255, 99, 132)',
+			blue: 'rgb(54, 162, 235)'
+		};
+		var effectColors = {
+			highlight: 'rgba(255, 255, 255, 0.75)',
+			shadow: 'rgba(0, 0, 0, 0.5)',
+			glow: 'rgb(255, 255, 0)'	
+		};
+
+		function randomScalingFactor() {
+			return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+		}
+
+		var color = Chart.helpers.color;
+		var config = {
+			type: 'bar',
+			data: {
+				labels: [5, 10, 15, 20, 25, 30, 0],
+				datasets: [{
+					label: 'Dataset 1',
+					backgroundColor: chartColors.red,
+					borderWidth: 0,
+					data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+						return randomScalingFactor();
+					}),
+					shadowOffsetX: 5,
+					shadowOffsetY: 5,
+					shadowBlur: [5, 10, 15, 20, 25, 30, 0],
+					shadowColor: effectColors.shadow
+				}, {
+					label: 'Dataset 2',
+					backgroundColor: color(chartColors.blue).alpha(0.5).rgbString(),
+					borderWidth: 0,
+					data: [0, 0, 0, 0, 0, 0, 0].map(function() {
+						return randomScalingFactor();
+					}),
+					shadowOffsetX: 5,
+					shadowOffsetY: 5,
+					shadowBlur: [5, 10, 15, 20, 25, 30, 0],
+					shadowColor: effectColors.shadow
+				}]
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Drop shadow effect sample'
+				},
+				scales: {
+					xAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'ShadowBlur'
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}]
+				},
+				tooltips: {
+					shadowOffsetX: 3,
+					shadowOffsetY: 3,
+					shadowBlur: 10,
+					shadowColor: effectColors.shadow,
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('myChart').getContext('2d');
+			window.myChart = new Chart(ctx, config);
+		};
+
+		document.getElementById('randomizeData').addEventListener('click', function() {
+			config.data.datasets.forEach(function(dataset) {
+				dataset.data = dataset.data.map(function() {
+					return randomScalingFactor();
+				});
+			});
+			window.myChart.update();
+		});
+	</script>
+</body>
+
+</html>

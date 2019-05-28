@@ -1,0 +1,67 @@
+//
+// Button - Sizes
+//
+
+.btn-sm {
+  line-height: $btn-line-height-sm;
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+}
+
+.btn-lg {
+  line-height: $btn-line-height-lg;
+  padding: $btn-padding-y-lg $btn-padding-x-lg;
+}
+
+// Wide
+.btn-wide {
+  min-width: $btn-min-width-wide;
+}
+
+// .btn-wide-md {
+//   min-width: $btn-min-width-wide-md;
+// }
+
+// .btn-wide-sm {
+//   min-width: $btn-min-width-wide-sm;
+// }
+
+// .btn-wide-xs {
+//   min-width: $btn-min-width-wide-xs;
+// }
+
+// With icon
+.btn-icon {
+  .btn-sm & {
+    font-size: $btn-icon-font-size-sm;
+  }
+
+  .btn-lg & {
+    font-size: $btn-icon-font-size-lg;
+  }
+}
+
+// Circle
+.btn-circle {
+  &.btn-sm {
+    width: $btn-circle-width-sm;
+    height: $btn-circle-height-sm;
+  }
+
+  &.btn-lg {
+    width: $btn-circle-width-lg;
+    height: $btn-circle-height-lg;
+  }
+}
+
+// Piled
+.btn-pill {
+  &.btn-sm {
+    padding-left: $btn-pill-padding-x-sm;
+    padding-right: $btn-pill-padding-x-sm;
+  }
+
+  &.btn-lg {
+    padding-left: $btn-pill-padding-x-lg;
+    padding-right: $btn-pill-padding-x-lg;
+  }
+}

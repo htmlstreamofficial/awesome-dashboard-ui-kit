@@ -1,0 +1,29 @@
+//
+// Avatar Sizes
+//
+
+.u-avatar {
+  &-xs {
+    width: $avatar-width-xs;
+    height: $avatar-height-xs;
+  }
+
+  &-sm {
+    width: $avatar-width-sm;
+    height: $avatar-height-sm;
+  }
+
+  &-md {
+    width: $avatar-width-md;
+    height: $avatar-height-md;
+  }
+
+  &-lg {
+    width: $avatar-width-lg;
+    height: $avatar-height-lg;
+
+    &.u-avatar-minus-half-offset {
+      margin-top: -$avatar-height-lg / 2;
+    }
+  }
+}

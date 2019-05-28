@@ -1,0 +1,22 @@
+//
+// Icon Sizes
+//
+
+.u-icon {
+  &-xs {
+    width: $icon-width-xs;
+    height: $icon-height-xs;
+    font-size: $icon-font-size-xs;
+  }
+
+  &-sm {
+    width: $icon-width-sm;
+    height: $icon-height-sm;
+    font-size: $icon-font-size-sm;
+  }
+
+  &-simple {
+    width: auto;
+    height: auto;
+  }
+}

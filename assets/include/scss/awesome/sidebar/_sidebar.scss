@@ -1,0 +1,124 @@
+//
+// Sidebar
+//
+
+.u-sidebar {
+  position: absolute;
+  top: -$header-height;
+  width: 100%;
+  height: calc(100% + #{$header-height});
+  font-size: $sidebar-font-size;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    display: block;
+    height: 100%;
+    opacity: 0;
+    width: $sidebar-width;
+    background-color: $sidebar-bg-color;
+    transition: width .2s ease-in, left .2s ease-in;
+
+    body.mobile-mode.side-nav-on-action &,
+    body.tablet-mode &,
+    body.desktop-mode & {
+      opacity: 1;
+    }
+
+    body.mobile-mode & {
+      left: -100%;
+    }
+
+    body.mobile-mode.side-nav-on-action & {
+      left: 0;
+    }
+  }
+
+  &-inner {
+    position: relative;
+    left: -100%;
+    z-index: 4;
+    width: $sidebar-width;
+    min-height: 100vh;
+    background-color: $sidebar-bg-color;
+    padding: 0 .5rem .94rem;
+    transition: left .2s ease-in;
+
+    .tablet &,
+    .action & {
+      left: 0;
+    }
+
+    body.sidebar-mobile-closed & {
+      opacity: 0;
+    }
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $header-height;
+    border-bottom: 1px solid $sidebar-border-color;
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-up(lg) {
+      height: $header-height-res-lg;
+    }
+  }
+
+  &-logo {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    color: $header-logo-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      outline: 0 none;
+      color: $header-logo-color-hover;
+    }
+
+    &__icon {
+      margin-left: $header-logo-icon-spacer-x / 2;
+      margin-right: $header-logo-icon-spacer-x / 2;
+      transition: all .2s ease-in-out;
+    }
+
+    &__text {
+      display: inline;
+      max-width: 8.75rem;
+      opacity: 1;
+      margin-left: $header-logo-text-spacer-x / 2;
+      margin-right: $header-logo-text-spacer-x / 2;
+      transition: all .2s ease-in-out;
+    }
+  }
+
+  // Sidebar Invoker
+  &-invoker__icon {
+    &--open {
+      display: block;
+
+      body.side-nav-on-action & {
+        display: none;
+      }
+    }
+
+    &--close {
+      display: none;
+
+      body.side-nav-on-action & {
+        display: block;
+      }
+    }
+  }
+}
+
+body:not(.mobile-mode) .u-sidebar.mini.action::before {
+  width: $sidebar-min-width;
+}

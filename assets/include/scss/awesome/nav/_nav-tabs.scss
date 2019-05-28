@@ -1,0 +1,48 @@
+//
+// Nav Tabs
+//
+
+// Default
+.nav-tabs {
+  .nav-item {
+    font-weight: $nav-tabs-item-font-weight;
+    font-size: $nav-tabs-item-font-size;
+  }
+
+  .nav-link {
+    color: $nav-tabs-link-color;
+
+    &.active {
+      border-top: $nav-tabs-link-active-border-top-width solid $nav-tabs-link-active-border-top-color;
+    }
+
+    &:hover {
+      color: $nav-tabs-link-hover-color;
+    }
+  }
+}
+
+// Card Header
+.card-header-tabs {
+  margin: $nav-tabs-card-header-space-y $nav-tabs-card-header-space-x;
+
+  .nav-item {
+    margin-bottom: $nav-tabs-card-header-item-space-y;
+
+    & + .nav-item {
+      margin-left: $nav-tabs-card-header-item-space-x;
+    }
+  }
+
+  .nav-link {
+    color: $nav-tabs-card-header-link-color;
+    border: 0 none;
+    padding: $nav-tabs-card-header-link-padding-y $nav-tabs-card-header-link-padding-x;
+
+    &.active {
+      color: $nav-tabs-card-header-link-active-color;
+      border-top: 0 none;
+      border-bottom: $nav-tabs-card-header-link-active-border-width solid $nav-tabs-card-header-link-active-border-color;
+    }
+  }
+}

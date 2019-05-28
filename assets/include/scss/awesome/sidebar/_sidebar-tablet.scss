@@ -1,0 +1,39 @@
+//
+// Sidebar Tablet
+//
+
+.u-sidebar {
+  @include media-breakpoint-up(md) {
+    left: $sidebar-offset-x-res-md;
+    top: $sidebar-offset-y-res-md;
+    height: $sidebar-height-res-md;
+  }
+}
+
+.u-sidebar-inner {
+  @include media-breakpoint-up(md) {
+    left: $sidebar-inner-offset-x-res-md;
+    min-height: $sidebar-inner-height-res-md;
+    opacity: 1;
+    padding: $sidebar-inner-padding-y-res-md $sidebar-inner-padding-x-res-md;
+    transition: width .2s ease-in, left .2s ease-in;
+  }
+
+  .tablet.mini.action & {
+    @include media-breakpoint-up(md) {
+      width: $sidebar-min-width;
+    }
+  }
+}
+
+.u-sidebar-header {
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
+
+.u-sidebar-logo {
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}

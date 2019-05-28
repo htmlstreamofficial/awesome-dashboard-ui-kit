@@ -1,0 +1,14 @@
+//
+// Close
+//
+
+.close {
+  display: inline-flex;
+  float: none;
+  opacity: .3;
+  margin-left: $close-spacing-x;
+
+  &:hover {
+    opacity: 1;
+  }
+}

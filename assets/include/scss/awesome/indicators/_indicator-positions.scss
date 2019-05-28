@@ -1,0 +1,26 @@
+//
+// Indicator Positions
+//
+
+.u-indicator {
+  position: absolute;
+
+  &-top-right,
+  &-bottom-right {
+    transform: translate(50%, -50%);
+
+    .u-avatar-with-indicator & {
+      transform: translateX(50%);
+    }
+  }
+
+  &-top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &-bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+}

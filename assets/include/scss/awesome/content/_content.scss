@@ -1,0 +1,56 @@
+//
+// Content Sections
+//
+
+body.side-nav-on-action {
+  overflow-x: hidden;
+}
+
+.u-main {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: $main-height;
+  padding-left: $main-padding-x;
+  transition: padding-left .2s ease-in;
+
+  @include media-breakpoint-up(md) {
+    padding-left: $main-padding-x-res-md;
+  }
+
+  body.tablet-mode &,
+  body.side-nav-on-action & {
+    @include media-breakpoint-up(md) {
+      padding-left: $main-on-action-padding-x-res-md;
+    }
+  }
+}
+
+.u-content {
+  position: relative;
+  left: $content-offset-x;
+  z-index: $content-z-index;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: $content-width;
+  transition: left .2s ease-in;
+
+  body.side-nav-on-action & {
+    left: $content-on-action-width;
+  }
+
+  body.side-nav-on-action & {
+    @include media-breakpoint-up(md) {
+      left: $content-on-action-offset-x-res-md;
+    }
+  }
+}
+
+.u-body {
+  padding: $body-padding-y $body-padding-x;
+
+  @include media-breakpoint-up(md) {
+    padding: $body-md-padding-y $body-md-padding-x;
+  }
+}

@@ -1,0 +1,16 @@
+//
+// Header - Error Page
+//
+
+.u-header--error-page {
+  justify-content: center;
+  background-color: $header-error-page-bg-color;
+
+  @include media-breakpoint-up(lg) {
+    min-height: $header-error-page-height-res-lg;
+  }
+
+  .u-header-logo {
+    color: $header-logo-error-page-color;
+  }
+}

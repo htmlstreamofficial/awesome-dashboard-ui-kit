@@ -1,0 +1,42 @@
+//
+// Dropdowns
+//
+
+.dropdown-menu {
+  box-shadow: $dropdown-shadow;
+  padding: $dropdown-padding-y $dropdown-padding-x;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: $dropdown-helper-offset-x;
+    z-index: $dropdown-helper-z-index;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  &[x-placement="top-end"] {
+    margin: 0 0 $dropdown-spacer;
+
+    &::before {
+      top: $dropdown-helper-offset-y;
+      border: {
+        width: $dropdown-helper-border-width-x $dropdown-helper-border-width-y 0 $dropdown-helper-border-width-x;
+        style: solid;
+        color: $dropdown-bg-color transparent transparent transparent;
+      }
+    }
+  }
+
+  &[x-placement="bottom-end"] {
+    &::before {
+      bottom: $dropdown-helper-offset-y;
+      border: {
+        width: 0 $dropdown-helper-border-width-x $dropdown-helper-border-width-y $dropdown-helper-border-width-x;
+        style: solid;
+        color: transparent transparent $dropdown-bg-color transparent;
+      }
+    }
+  }
+}

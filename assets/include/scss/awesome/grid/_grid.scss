@@ -1,0 +1,12 @@
+//
+// Grid
+//
+
+.gutters-sm {
+  @include make-row($gutter-sm);
+
+  > .col,
+  > [class*="col-"] {
+    @include make-col-ready($gutter-sm);
+  }
+}

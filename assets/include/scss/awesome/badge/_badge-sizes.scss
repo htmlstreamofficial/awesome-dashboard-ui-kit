@@ -1,0 +1,14 @@
+//
+// Badge - Sizes
+//
+
+.badge {
+  &-xs {
+    padding: $badge-padding-y-xs $badge-padding-x-xs;
+  }
+
+  &-md {
+    font-size: $badge-font-size-md;
+    padding: $badge-padding-y-md $badge-padding-x-md;
+  }
+}

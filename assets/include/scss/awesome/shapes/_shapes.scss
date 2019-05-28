@@ -1,0 +1,35 @@
+//
+// Shapes
+//
+
+.u-shape {
+  position: absolute;
+
+  &-top-left,
+  &-top-right {
+    top: 0;
+  }
+
+  &-bottom-left,
+  &-bottom-right {
+    bottom: 0;
+  }
+
+  &-top-left,
+  &-bottom-left {
+    left: 0;
+
+    @include media-breakpoint-down(sm) {
+      left: 1rem;
+    }
+  }
+
+  &-top-right,
+  &-bottom-right {
+    right: 0;
+
+    @include media-breakpoint-down(sm) {
+      right: 1rem;
+    }
+  }
+}

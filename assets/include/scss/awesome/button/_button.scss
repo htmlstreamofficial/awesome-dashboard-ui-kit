@@ -1,0 +1,114 @@
+//
+// Buttons
+//
+
+// With Icon
+.btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon {
+  font-size: $btn-icon-font-size;
+  margin: $btn-icon-offset-y $btn-icon-offset-x;
+}
+
+// Circle
+.btn-circle {
+  border-radius: $btn-circle-radius;
+  padding: $btn-circle-padding-y $btn-circle-padding-x;
+  width: $btn-circle-width;
+  height: $btn-circle-height;
+}
+
+// Piled
+.btn-pill {
+  border-radius: $border-radius-pill;
+  padding-left: $btn-pill-padding-x;
+  padding-right: $btn-pill-padding-x;
+}
+
+// Link
+.btn-link {
+  font-weight: $font-weight-normal;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+// Original
+.btn-light,
+.btn-light-grey {
+  color: $grey;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+// Outline
+.btn-outline-light,
+.btn-outline-light-grey {
+  color: $grey;
+}
+
+.btn-primary-soft,
+.btn-secondary-soft,
+.btn-success-soft,
+.btn-warning-soft,
+.btn-danger-soft,
+.btn-info-soft {
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-primary-soft {
+  color: $primary;
+
+  &:hover {
+    background-color: $primary;
+  }
+}
+
+.btn-secondary-soft {
+  color: $secondary;
+
+  &:hover {
+    background-color: $secondary;
+  }
+}
+
+.btn-success-soft {
+  color: $success;
+
+  &:hover {
+    background-color: $success;
+  }
+}
+
+.btn-warning-soft {
+  color: $warning;
+
+  &:hover {
+    background-color: $warning;
+  }
+}
+
+.btn-danger-soft {
+  color: $danger;
+
+  &:hover {
+    background-color: $danger;
+  }
+}
+
+.btn-info-soft {
+  color: $info;
+
+  &:hover {
+    background-color: $info;
+  }
+}
