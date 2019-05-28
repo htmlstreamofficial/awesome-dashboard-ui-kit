@@ -2,8 +2,9 @@
 
 [![Awesome Dashboard UI Kit is a beautiful Open Source Bootstrap 4 Dashboard UI Kit crafted by Htmlstream.](https://htmlstream.com/preview/awesome-dashboard-ui-kit/assets/img-temp/aduik-preview.png)](https://htmlstream.com/preview/awesome-dashboard-ui-kit/)
 
-Awesome Dashboard UI Kit is a beautiful Open Source Bootstrap 4 UI Kit under MIT license.
-The UI Kit comes with 19 beautiful complete and functional pages including lots of reusable and customizable UI Blocks. Every component crafted with love to speed up your workflow.
+Awesome Dashboard UI Kit is a free Admin Dashboard Template built with Bootstrap 4 and licensed under MIT, which means it's completely free to use, even commercially. We put lots of effort to release this template with modern, functional and high-quality code in the package. We believe it will fully meet all the demands while using this template in your next projects.
+
+The UI Kit comes with lots of amazing features and beautiful 19 ready-to-use example pages including Dashboard, Profile, Authentication (Login, Registration, Password Recovery), Error (404, 500) and many other pages.
 
 
 ### What’s Included
