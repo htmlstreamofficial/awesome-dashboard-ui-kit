@@ -71,7 +71,7 @@ awesome-dashboard-ui-kit/
 
 ### Core Features
 
-- Moden Design
+- Modern Design
 - Fully Responsive
 - Bootstrap 4
 - jQuery
