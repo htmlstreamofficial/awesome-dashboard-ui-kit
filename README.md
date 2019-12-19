@@ -107,7 +107,7 @@ Awesome Dashboard UI Kit is built by the team that has customers in the backgrou
 Our soical network profiles:
 
 - [Twitter](https://twitter.com/htmlstream)
-- [Facebook](https://www.facebook.com/)
+- [Facebook](https://www.facebook.com/htmlstream)
 - [Dribbble](https://dribbble.com/htmlstream)
 - [Instagram](https://www.instagram.com/htmlstream/)
 
